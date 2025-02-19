@@ -39,10 +39,19 @@ export const MainButtonLight:React.FC<ButtonProps> = ({text, onClick}) => {
   }
 
 
-export const RoundedButton:React.FC<ButtonProps> = ({text}) => {
+export const RoundedSolidButton:React.FC<ButtonProps> = ({text}) => {
     return (
       <div>
-            <button className='bg-blue-100 font-medium text-xs text-[#016FEC] p-2 px-4 rounded-full'>{text}</button>
+            <button className='bg-[#016FEC] font-medium text-xs text-white p-2 px-4 rounded-full'>{text}</button>
       </div>
     )
-  }
+}
+
+
+export const RoundedButton:React.FC<ButtonProps> = ({text}) => {
+  return (
+    <div>
+          <button className='bg-blue-100 font-medium text-xs text-[#016FEC] p-2 px-4 rounded-full'>{text}</button>
+    </div>
+  )
+}
