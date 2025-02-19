@@ -2,6 +2,7 @@ import { MainButton } from '@/Compnents/CustomButton'
 import { friendsData } from '@/Compnents/MockData'
 import { useState } from 'react'
 import { PiEmptyLight } from "react-icons/pi";
+import { toast, ToastContainer } from "react-toastify"
 
 
 const Friends = () => {
@@ -11,6 +12,18 @@ const Friends = () => {
     const handleShow = () =>{
         setIsDataEmpty(true);
     }
+
+
+    const numberToCopy = "+2349136288934";
+
+    const handleCopy = async () => {
+        try {
+        await navigator.clipboard.writeText(numberToCopy);
+        toast.success("Number Copied")
+        } catch (err) {
+        console.error("Failed to copy!", err);
+        }
+    };
   return (
     <div className='p-5 text-sm'>
         <div className='text-center pt-5'>
@@ -19,9 +32,11 @@ const Friends = () => {
             Earn 3% daily mining pool <br /> for every of your referrals
             </p>
         </div>
+        <ToastContainer theme="light"  hideProgressBar autoClose={3000} />
+
 
         {
-            isDataEmpty !== false ?
+            isDataEmpty === false ?
             <div>
                 <div className='bg-neutral-100 flex items-center mt-2 justify-between p-5 rounded-lg'>
                     <h2 className='text-center text-black text-sm'>Total </h2>
@@ -53,10 +68,10 @@ const Friends = () => {
                 </div>
             </div> :
 
-            <div className='bg-neutral-100 mt-[10rem] p-5 justify-center flex items-center'>
-                <div>
-                    <PiEmptyLight />
-                    <h2>There is no reward yet! Invite Friends and get more rewards.</h2>
+            <div className='bg-neutral-100 mt-[5rem] h-[20rem] p-10 rounded-xl justify-center m-auto flex items-center'>
+                <div className='text-center text-neutral-600 flex flex-col gap-5 items-center justify-center'>
+                    <p className='text-3xl'><PiEmptyLight /></p>
+                    <h2 onClick={handleShow} className='text-base'>There is no reward yet! Invite Friends and get more rewards.</h2>
                 </div>
             </div>
         }
@@ -64,7 +79,7 @@ const Friends = () => {
 
         <div className='w-full space-y-2 fixed bottom-[6rem] bg-white p-2'>
             <div className='w-[90%]'>
-                <MainButton text='Copy Invite Link' onClick={handleShow}/>
+                <MainButton text='Copy Invite Link' onClick={handleCopy}/>
             </div>
         </div>
 

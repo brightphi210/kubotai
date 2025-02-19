@@ -101,3 +101,48 @@ export const friendsData = [
         avatar: 'https://randomuser.me/api/portraits/men/66.jpg'
     },
 ]
+
+export const leaderData = [
+    {
+        name: 'John Doe',
+        price: '5000',
+        avatar: 'https://randomuser.me/api/portraits/men/88.jpg'
+    },
+
+    {
+        name: 'Jane Smith',
+        price: '5000',
+        avatar: 'https://randomuser.me/api/portraits/women/44.jpg'
+    },
+
+    {
+        name: 'Michael Johnson',
+        price: '5000',
+        avatar: 'https://randomuser.me/api/portraits/men/99.jpg'
+    },
+
+    {
+        name: 'Emily Davis',
+        price: '5000',
+        avatar: 'https://randomuser.me/api/portraits/women/26.jpg'
+    },
+
+
+    {
+        name: 'Sarah Wilson',
+        price: '5000',
+        avatar: 'https://randomuser.me/api/portraits/women/79.jpg'
+    },
+
+    {
+        name: 'David Lee',
+        price: '5000',
+        avatar: 'https://randomuser.me/api/portraits/men/66.jpg'
+    },
+
+    {
+        name: 'Kubit Ai',
+        price: '5000',
+        avatar: 'https://randomuser.me/api/portraits/men/56.jpg'
+    },
+]
