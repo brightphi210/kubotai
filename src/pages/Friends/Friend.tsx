@@ -27,12 +27,12 @@ const Friends = () => {
   return (
     <div className='p-5 text-sm'>
         <div className='text-center pt-5'>
-            <h2 className='text-4xl font-semibold'>Invite Friends</h2>
+            <h2 className='text-3xl font-semibold'>Invite Friends</h2>
             <p className='text-lg font-light text-neutral-500 pt-2'>
-            Earn 3% daily mining pool <br /> for every of your referrals
+                Earn 3% daily mining pool <br /> for every of your referrals
             </p>
         </div>
-        <ToastContainer theme="light"  hideProgressBar autoClose={3000} />
+        <ToastContainer theme="light"  autoClose={3000} />
 
 
         {
@@ -82,7 +82,6 @@ const Friends = () => {
                 <MainButton text='Copy Invite Link' onClick={handleCopy}/>
             </div>
         </div>
-
 
     </div>
   )

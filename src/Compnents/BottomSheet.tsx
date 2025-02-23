@@ -19,7 +19,7 @@ const BottomSheet = () => {
             { name: "Task", icon: <CiViewList className="text-2xl" />, link: '/task' },
             { name: "Friends", icon: <MdOutlinePeopleAlt className="text-2xl" />, link: '/friends' },
             { name: "Leaders", icon: <PiTrophy className="text-2xl" />, link: '/leader' },
-            { name: "Wallet", icon: <IoWalletOutline className="text-2xl" />, link: '' },
+            { name: "Wallet", icon: <IoWalletOutline className="text-2xl" />, link: '/wallet' },
           ].map((tab) => (
             <Link to={`${tab?.link}` }>
             <div

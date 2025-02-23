@@ -15,7 +15,7 @@ const WelcomeScreen = () => {
         }`}
       >
         <span className="animate-gradient tracking-tighter bg-gradient-to-r from-blue-500 via-violet-500 to-orange-500 bg-clip-text text-transparent">
-          Kubit Ai
+          KubitAi
         </span>
       </h1>
     </div>

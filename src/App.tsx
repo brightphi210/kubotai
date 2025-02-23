@@ -4,7 +4,7 @@ import WelcomeScreen from "./Compnents/WelcomeScreen"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AllRoute from "./Routes/Route";
 import BottomSheet from "./Compnents/BottomSheet";
-
+import { TonConnectUIProvider } from "@tonconnect/ui-react"
 
 declare global {
   interface Window {
@@ -58,16 +58,20 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="*" element={
-          <div>
-            <AllRoute />
-            <BottomSheet />
-          </div>
-        } />
-      </Routes>
-    </BrowserRouter>
+    <TonConnectUIProvider manifestUrl="https://brown-calm-koi-328.mypinata.cloud/ipfs/bafkreihisybjfal2vklw2tj74xfzhk4dafay45ezp7yjfhn46ak2c2a2qi">
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="*" element={
+              <div>
+                <AllRoute />
+                <BottomSheet />
+              </div>
+            } />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </TonConnectUIProvider>
   )
 }
 

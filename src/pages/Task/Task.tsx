@@ -6,7 +6,7 @@ const Task = () => {
   return (
     <div className='p-5 text-sm'>
         <div className='text-center pt-5'>
-            <h2 className='text-4xl font-semibold'>Task</h2>
+            <h2 className='text-3xl font-semibold'>Task</h2>
             <p className='text-lg font-light text-neutral-500 pt-2'>
                 Get Rewarded <br/> for  
                 Completing a task
