@@ -5,7 +5,7 @@ import { MainButton } from "../../Compnents/CustomButton"
 import walleta from "../../assets/wallet.png"
 import { SiTon } from "react-icons/si";
 import { GoEye, GoEyeClosed } from "react-icons/go";
-import { TiStarFullOutline, TiStarOutline } from "react-icons/ti";
+import {TiStarOutline } from "react-icons/ti";
 
               
 
@@ -123,7 +123,7 @@ const Wallet = () => {
                 </div>
             </div>
             <div className="bg-white p-3 px-6 mt-3 flex justify-between rounded-full">
-                <p className="flex items-center gap-2"><SiTon className="text-3xl"/>
+                <p className="flex items-center gap-2"><SiTon className="text-3xl text-[#016FEC]"/>
                    {showWallet ? <> {formatAddress(tonWalletAddress)}</>: 
                     <p className="text-lg flex items-center gap-1 text-neutral-600">
                         <TiStarOutline /> 
@@ -135,7 +135,7 @@ const Wallet = () => {
                     </p>
                     }
                 </p>
-                <p onClick={()=>setShowWallet(!showWallet)} className="flex text-blue-700 items-center border border-neutral-200 gap-2 text-2xl bg-neutral-100 rounded-md w-fit p-2">
+                <p onClick={()=>setShowWallet(!showWallet)} className="flex text-blue-700 items-center rounded-full gap-2 text-2xl bg-neutral-100 w-fit p-2">
                     {showWallet ? <GoEye /> : <GoEyeClosed />}
                 </p>
             </div>

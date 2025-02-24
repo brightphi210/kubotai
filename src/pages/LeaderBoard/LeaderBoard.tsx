@@ -17,7 +17,7 @@ const LeaderBoard = () => {
 
         <div className='flex gap-8 p-5 pt-20'>
             <div className='relative pt-10'>
-                <div className='absolute top-[-7px] z-10'>
+                <div className='absolute top-[-5px] z-10'>
                     <img src={group2} className='full' alt="" />
                 </div>
 
@@ -25,7 +25,7 @@ const LeaderBoard = () => {
                     <img src={position1} className='full' alt="" />
                     <div className='text-xs text-center absolute bottom-6 right-0 left-0'>
                         <h2 className='font-semibold'>Collins</h2>
-                        <p className='text-[9px] pt-[1px]'>50,000 Kubot</p>
+                        <p className='text-[9px] pt-[1px]'>50,000 KA</p>
                     </div>
                 </div>
             </div>
@@ -39,13 +39,13 @@ const LeaderBoard = () => {
                     <img src={position2} className='full' alt="" />
                     <div className='text-xs text-center absolute bottom-6 right-0 left-0'>
                         <h2 className='font-semibold'>iamkvisuals</h2>
-                        <p className='text-[9px] pt-[1px]'>50,000 Kubot</p>
+                        <p className='text-[9px] pt-[1px]'>50,000 KA</p>
                     </div>
                 </div>
             </div>
 
             <div className='relative pt-10'>
-                <div className='absolute top-[-7px] z-10'>
+                <div className='absolute top-[-5px] z-10'>
                     <img src={group3} className='full' alt="" />
                 </div>
 
@@ -53,7 +53,7 @@ const LeaderBoard = () => {
                     <img src={position3} className='full' alt="" />
                     <div className='text-xs text-center absolute bottom-6 right-0 left-0'>
                         <h2 className='font-semibold'>Bright</h2>
-                        <p className='text-[9px] pt-[1px]'>50,000 Kubot</p>
+                        <p className='text-[9px] pt-[1px]'>50,000 KA</p>
                     </div>
                 </div>
             </div>
