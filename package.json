@@ -15,6 +15,7 @@
     "@ton/core": "^0.60.1",
     "@tonconnect/sdk": "^3.0.6",
     "@tonconnect/ui-react": "^2.0.11",
+    "@twa-dev/sdk": "^8.0.2",
     "@vkruglikov/react-telegram-web-app": "^1.1.1",
     "aos": "^3.0.0-beta.6",
     "axios": "^1.7.9",

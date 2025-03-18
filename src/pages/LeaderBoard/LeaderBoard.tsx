@@ -8,6 +8,12 @@ import group1 from '../../assets/Group 13.png'
 import group2 from '../../assets/Group 14.png'
 import group3 from '../../assets/Group 15.png'
 import { leaderData } from '@/Compnents/MockData'
+
+const names= [
+    'Collins',
+    'iamkvisuals',
+    'Bright'
+]
 const LeaderBoard = () => {
   return (
     <div className='p-5 text-sm overflow-y-scroll'>
@@ -24,7 +30,7 @@ const LeaderBoard = () => {
                 <div className='relative'>
                     <img src={position1} className='full' alt="" />
                     <div className='text-xs text-center absolute bottom-6 right-0 left-0'>
-                        <h2 className='font-semibold'>Collins</h2>
+                        <h2 className='font-semibold'>{names[0].length >= 5 ? `${names[0].slice(0, 4)}..` : names[0]}</h2>
                         <p className='text-[9px] pt-[1px]'>50,000 KA</p>
                     </div>
                 </div>
@@ -38,7 +44,7 @@ const LeaderBoard = () => {
                 <div className='relative'>
                     <img src={position2} className='full' alt="" />
                     <div className='text-xs text-center absolute bottom-6 right-0 left-0'>
-                        <h2 className='font-semibold'>iamkvisuals</h2>
+                        <h2 className='font-semibold'>{names[1].length >= 5 ? `${names[1].slice(0, 4)}..` : names[1]}</h2>
                         <p className='text-[9px] pt-[1px]'>50,000 KA</p>
                     </div>
                 </div>
@@ -52,7 +58,7 @@ const LeaderBoard = () => {
                 <div className='relative'>
                     <img src={position3} className='full' alt="" />
                     <div className='text-xs text-center absolute bottom-6 right-0 left-0'>
-                        <h2 className='font-semibold'>Bright</h2>
+                        <h2 className='font-semibold'>{names[2].length >= 5 ? `${names[2].slice(0, 4)}..` : names[2]}</h2>
                         <p className='text-[9px] pt-[1px]'>50,000 KA</p>
                     </div>
                 </div>

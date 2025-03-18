@@ -6,45 +6,26 @@ import walleta from "../../assets/wallet.png"
 import { SiTon } from "react-icons/si";
 import { GoEye, GoEyeClosed } from "react-icons/go";
 import {TiStarOutline } from "react-icons/ti";
+import { useTelegram } from "@/Providers/TelegramContext";
 
               
 
 const Wallet = () => {
   const [tonConnectUI] = useTonConnectUI()
   const [tonWalletAddress, setTonWalletAddress] = useState<string | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-
   const [showWallet, setShowWallet] = useState(false)
 
-  const [user, setUser] = useState<{
-    id: number
-    first_name: string
-    last_name?: string
-    username?: string
-    language_code?: string
-    photo_url?: string
-  } | null>(null)
+  const { user, isLoading } = useTelegram()
 
-
-  useEffect(() => {
-    if (window.Telegram && window.Telegram.WebApp) {
-      const telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
-      if (telegramUser) {
-        setUser(telegramUser);
-      }
-    }
-  }, []);
 
   const handleWalletConnection = useCallback((address: string) => {
     setTonWalletAddress(address)
     console.log("Wallet connected successfully!")
-    setIsLoading(false)
   }, [])
 
   const handleWalletDisconnection = useCallback(() => {
     setTonWalletAddress(null)
     console.log("Wallet disconnected successfully!")
-    setIsLoading(false)
   }, [])
 
   useEffect(() => {
@@ -73,7 +54,6 @@ const Wallet = () => {
 
   const handleWalletAction = async () => {
     if (tonConnectUI.connected) {
-      setIsLoading(true)
       await tonConnectUI.disconnect()
     } else {
       await tonConnectUI.openModal()
