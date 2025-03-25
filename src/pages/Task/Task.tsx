@@ -75,11 +75,6 @@ const Task = () => {
   }
 
 
-  // useEffect(()=>{
-  //   localStorage.removeItem("joinedTasks")
-  // },[])
-
-
   useEffect(() => {
     const savedJoinedTasks = localStorage.getItem("joinedTasks")
     if (savedJoinedTasks) {
@@ -123,8 +118,9 @@ const Task = () => {
       return
     }
     const now = Date.now()
-    setJoinedTasks((prev) => [...prev.filter((t) => t.taskId !== taskId), { taskId, joinedAt: now, canClaim: false }])
-    window.open(taskUrl, "_blank")
+      setJoinedTasks((prev) => [...prev.filter((t) => t.taskId !== taskId), { taskId, joinedAt: now, canClaim: false }]);
+      (document.getElementById("my_modal_1") as HTMLDialogElement)?.close()
+      window.open(taskUrl, "_blank")
   }
 
   const handleClaimReward = (taskId: number) => {
@@ -139,8 +135,8 @@ const Task = () => {
       },
       {
         onSuccess: () => {
-          (document.getElementById("my_modal_1") as HTMLDialogElement)?.close()
-          toast.success("Reward claimed successfully")
+          (document.getElementById("my_modal_1") as HTMLDialogElement)?.showModal()
+          // toast.success("Reward claimed successfully")
           refetch()
           completedRefresh()
           setJoinedTasks((prev) => prev.filter((task) => task.taskId !== taskId))
