@@ -9,9 +9,9 @@ import { TelegramProvider, useTelegram } from "./Providers/TelegramContext"
 function AppContent() {
   const { user, isLoading } = useTelegram()
 
-  // if (isLoading || !user) {
-  //   return <WelcomeScreen />
-  // }
+  if (isLoading || !user) {
+    return <WelcomeScreen />
+  }
 
   return (
     <div>
