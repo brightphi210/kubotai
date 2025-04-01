@@ -8,6 +8,9 @@ import chargefive from '../../assets/charge5.png'
 import chargesix from '../../assets/charge6.png'
 import { IoIosTimer } from "react-icons/io";
 import { SiRakuten } from "react-icons/si";
+import useRewardsGet from '@/hooks/queries/useGetRewards'
+import { SlClose } from "react-icons/sl";
+
 
 declare global {
   interface Window {
@@ -27,6 +30,17 @@ declare global {
       }
     }
   }
+}
+
+interface RewardData {
+  id: number
+  task: {
+    title: string
+  }
+  description: string
+  image_url: string
+  created_at: string
+  amount: number
 }
 
 const chargingLevels = [chargeone, chargetwo, chargethree, chargefour, chargefive, chargesix];
@@ -98,15 +112,21 @@ const Home = () => {
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   };
 
+  const {data: rewardDatas, isLoading} = useRewardsGet({userName: user?.username || 'brightscode'});
+  const myRewardDatas = rewardDatas?.data?.data as RewardData[] | undefined
+
+  console.log('This is my data', myRewardDatas)
+
+
   return (
-    <div className='p-5 text-sm relative'>
+    <div className='p-5 text-sm relative bg-gray-100 h-screen overflow-y-scroll'>
       <div className='flex items-center gap-3'>
         <div className='w-10 h-10 bg-neutral-200 rounded-full flex overflow-hidden'>
           <img src={user?.photo_url} className='w-full h-full object-cover' alt="user avatar" />
         </div>
         <div>
           <h2 className='font-semibold'>{user?.first_name} {user?.last_name}</h2>
-          <p className='text-xs text-neutral-600'>@{user?.username}</p>
+          <p className='text-xs text-neutral-600'>@{user?.username || 'No username'}</p>
         </div>
         <div className='ml-auto'>
           <RoundedButton text='Level 1' />
@@ -134,13 +154,77 @@ const Home = () => {
       </div>
 
       <div className='w-[90%] space-y-2 fixed bottom-[7rem]'>
-        <MainButtonLight text='Check your earnings' />
+        <MainButtonLight text='Check your earnings' onClick={()=>(document.getElementById("my_modal_2") as HTMLDialogElement)?.showModal()}/>
         {
-            isCharging
-             ? <MainButtonDisable text='Mining in Progress . .' />
-              : <MainButton text='Start Mining' onClick={() => setIsCharging(true)}/>
+          isCharging
+          ? <MainButtonDisable text='Mining in Progress . .' />
+          : <MainButton text='Start Mining' onClick={() => setIsCharging(true)}/>
         }
       </div>
+
+      <dialog id="my_modal_2" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box !h-[47%] p-4 bg-gray-100">
+          <div className='flex items-center justify-between'>
+            <h3 className="font-medium text-lg">Earnings</h3>
+            <h3 className="font-semibold text-2xl" onClick={
+              () => {
+                (document.getElementById("my_modal_2") as HTMLDialogElement)?.close();
+              }
+            }><SlClose /></h3>
+          </div>
+          
+          <div className=' rounded-md mt-5'>
+            {isLoading ? 
+              <>
+                <p>Loading. .</p>
+              </> : 
+              <>
+                {myRewardDatas?.length === 0 ? (
+                    <p className='text-center text-sm'>No earnings yet</p>
+                  ) :
+                  (
+                    <>
+                      {myRewardDatas?.map((reward)=>{
+
+                          const formattedDate = new Date(reward.created_at).toLocaleString('en-US', {
+                            day: '2-digit',
+                            month: 'long',
+                            year: 'numeric',
+                            hour: 'numeric',
+                            minute: '2-digit',
+                            hour12: true,
+                          });   
+                        return (
+
+                          <div className="pt-3 flex mb-3 rounded-md bg-white p-3 border-neutral-300 items-center justify-between ">
+                            <div className='flex gap-2 items-center'>
+                              <div className="p-4 text-white bg-blue-600 rounded-md text-md">
+                                <SiRakuten />
+                              </div>
+                              <div className="text-xs font-medium">
+                                <p>{reward?.task?.title}</p>
+                                <p className='text-[9px]'>{formattedDate.replace('AM', 'am').replace('PM', 'pm')}</p>
+                              </div>
+                            </div>
+                            <div className="text-xs font-medium">
+                                <p>+{reward?.amount} Kubot</p>
+                                <p className='text-green-500 text-[10px] text-right'>Recieved</p>
+                            </div>
+                          </div>  
+                        )
+                      })}
+                    </>
+                  )
+                }
+              </>
+            }
+          </div>
+        </div>
+        
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
     </div>
   );
 };

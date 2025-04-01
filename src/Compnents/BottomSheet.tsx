@@ -12,8 +12,8 @@ const BottomSheet = () => {
     const [activeTab, setActiveTab] = useState("Home");
   
     return (
-      <div className="fixed bottom-0 border-t border-neutral-300 w-full text-[10px] bg-white">
-        <div className="flex items-center gap-3 justify-between p-5">
+      <div className="fixed bottom-0 border-t border-gray-300 w-full text-[7px] bg-white">
+        <div className="flex items-center gap-3 justify-between p-3 px-4">
           {[
             { name: "Home", icon: <GoHome className="text-2xl" />, link: '/' },
             { name: "Task", icon: <CiViewList className="text-2xl" />, link: '/task' },
@@ -24,7 +24,7 @@ const BottomSheet = () => {
             <Link to={`${tab?.link}` }>
             <div
               key={tab.name}
-              className={`flex flex-col w-14 h-14 items-center rounded-xl justify-center cursor-pointer transition-all ease-in-out duration-300 ${
+              className={`flex flex-col w-12 h-11 items-center rounded-md justify-center cursor-pointer transition-all ease-in-out duration-300 ${
                 activeTab === tab.name
                   ? "bg-[#016FEC] text-white "
                   : "text-neutral-500"

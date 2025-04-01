@@ -5,7 +5,7 @@ import { MainButton } from "../../Compnents/CustomButton"
 import walleta from "../../assets/wallet.png"
 import { SiTon } from "react-icons/si";
 import { GoEye, GoEyeClosed } from "react-icons/go";
-import {TiStarOutline } from "react-icons/ti";
+import {GoStarFill  } from "react-icons/go";
 import { useTelegram } from "@/Providers/TelegramContext";
 
               
@@ -81,8 +81,8 @@ const Wallet = () => {
   return (
     <div className="p-5 text-sm overflow-y-scroll">
       <div className="text-center pt-5">
-        <h2 className="text-3xl font-semibold">Wallet</h2>
-        <p className="text-lg font-light text-neutral-500 pt-2">
+        <h2 className="text-2xl font-semibold">Wallet</h2>
+        <p className="text-sm font-light text-neutral-500 pt-2">
           Connect your wallet <br />
           to claim rewards
         </p>
@@ -105,13 +105,15 @@ const Wallet = () => {
             <div className="bg-white p-3 px-6 mt-3 flex justify-between rounded-full">
                 <p className="flex items-center gap-2"><SiTon className="text-3xl text-[#016FEC]"/>
                    {showWallet ? <> {formatAddress(tonWalletAddress)}</>: 
-                    <p className="text-lg flex items-center gap-1 text-neutral-600">
-                        <TiStarOutline /> 
-                        <TiStarOutline  /> 
-                        <TiStarOutline  /> 
-                        <TiStarOutline  />
-                        <TiStarOutline  />
-                        <TiStarOutline  />
+                    <p className="text-xs flex items-center gap-0.5 text-neutral-900">
+                        <GoStarFill /> 
+                        <GoStarFill  /> 
+                        <GoStarFill  /> 
+                        <GoStarFill  />
+                        <GoStarFill  />
+                        <GoStarFill  />
+                        <GoStarFill  />
+                        <GoStarFill  />
                     </p>
                     }
                 </p>

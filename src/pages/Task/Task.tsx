@@ -43,7 +43,7 @@ interface TaskJoinState {
   canClaim: boolean
 }
 
-const CLAIM_DELAY_MS = 30000 // 30 seconds in milliseconds
+const CLAIM_DELAY_MS = 10000 // 30 seconds in milliseconds
 
 const Task = () => {
 
@@ -93,6 +93,13 @@ const Task = () => {
     }
   }, [joinedTasks])
 
+
+  // const clearLocalStorage = () => {
+  //   localStorage.removeItem("joinedTasks")
+  //   setJoinedTasks([])
+  //   toast.success("Task data cleared successfully")
+  // }
+
   // Check if tasks can be claimed (after delay)
   useEffect(() => {
     const interval = setInterval(() => {
@@ -116,11 +123,12 @@ const Task = () => {
     if (!user?.id) {
       console.error("User not logged in")
       return
-    }
+    };
+
     const now = Date.now()
-      setJoinedTasks((prev) => [...prev.filter((t) => t.taskId !== taskId), { taskId, joinedAt: now, canClaim: false }]);
-      (document.getElementById("my_modal_1") as HTMLDialogElement)?.close()
-      window.open(taskUrl, "_blank")
+    setJoinedTasks((prev) => [...prev.filter((t) => t.taskId !== taskId), { taskId, joinedAt: now, canClaim: false }]);
+    window.open(taskUrl, "_blank");
+    (document.getElementById("my_modal_2") as HTMLDialogElement)?.close()
   }
 
   const handleClaimReward = (taskId: number) => {
@@ -136,7 +144,6 @@ const Task = () => {
       {
         onSuccess: () => {
           (document.getElementById("my_modal_1") as HTMLDialogElement)?.showModal()
-          // toast.success("Reward claimed successfully")
           refetch()
           completedRefresh()
           setJoinedTasks((prev) => prev.filter((task) => task.taskId !== taskId))
@@ -170,7 +177,7 @@ const Task = () => {
   // ============= GETTING COMPLETED TASK =============
 
   return (
-    <div className="p-5 text-sm">
+    <div className="p-5 text-sm bg-gray-100 h-screen overflow-y-scroll">
       <ToastContainer theme="light" autoClose={4000} />
       <div className="text-center pt-5">
         <h2 className="text-2xl font-semibold">Task</h2>
@@ -179,7 +186,7 @@ const Task = () => {
         </p>
       </div>
 
-      <div className="bg-neutral-50 border border-neutral-200 flex items-center text-xs mt-2 justify-between p-2 rounded-md">
+      <div className="bg-gray-50 border border-gray-200 flex items-center text-xs mt-2 justify-between p-2 rounded-md">
         <div
           className={`${isCompleted === 1 ? "bg-blue-100 p-3" : ""} w-full rounded-md`}
           onClick={() => setIsCompleted(1)}
@@ -200,7 +207,7 @@ const Task = () => {
       ) : (
         <>
           {isCompleted === 1 && (
-            <div className="mt-5 mb-24 bg-neutral-50 p-3 rounded-lg">
+            <div className="mt-5 mb-24 rounded-lg">
               {taskData && taskData.length > 0 ? (
                 taskData
                   .filter((task) => {
@@ -213,9 +220,9 @@ const Task = () => {
                     const joinedTask = joinedTasks.find((t) => t.taskId === task.id)
 
                     return (
-                      <div key={index} className="flex justify-between mb-5 pb-3 border-b border-neutral-200">
+                      <div key={index} className="flex justify-between mb-5 p-3 rounded-md bg-white">
                         <div className="flex gap-3 items-center">
-                          <p className="bg-neutral-100 border border-neutral-300 text-neutral-600 rounded-md p-4 text-base">
+                          <p className="bg-neutral-100 border border-neutral-300 text-neutral-600 rounded-md p-3.5 text-base">
                             <SiRakuten />
                           </p>
                           <div>
@@ -231,10 +238,19 @@ const Task = () => {
 
                         <div>
                           {status === "canClaim" ? (
-                            <RoundedButton
-                              text={isPending ? "Claiming..." : "Claim"}
-                              onClick={() => handleClaimReward(task.id)}
-                            />
+                            <> 
+                              {!isPending ? 
+                              
+                                <RoundedButton
+                                  text={"Claim"}
+                                  onClick={() => handleClaimReward(task.id)}
+                                /> :
+
+                                <div className="text-[#016FEC] bg-blue-100 border border-blue-200 p-1.5 pb-0 px-4 rounded-full">
+                                  <span className="loading loading-dots loading-xs"></span>
+                                </div>
+                              }
+                            </>
                           ) : status === "joined" ? (
                               <div className="bg-[#016FEC] p-1.5 pb-0 px-4 rounded-full text-white">
                                 <span className="loading loading-dots loading-xs"></span>
@@ -289,6 +305,8 @@ const Task = () => {
         </>
       )}
 
+      {/* <button className="btn" onClick={clearLocalStorage}>Clear Locale Data</button> */}
+
       <dialog id="my_modal_2" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box !h-[47%] px-10">
           <h3 className="font-semibold text-lg text-center pt-5">Perfom Task <span className="text-green-600 text-xs font-medium">+5 (kubot)</span></h3>
@@ -318,24 +336,22 @@ const Task = () => {
         </form>
       </dialog>
 
-        {/* <button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>open modal</button> */}
-        <dialog id="my_modal_1" className="modal">
-          <div className="modal-box">
-            <p className="text-4xl text-center p-3 bg-green-100 text-green-700 border border-green-300 w-fit  rounded-full flex m-auto justify-center">
-              <IoCheckmarkDoneOutline  />
-            </p>
-            
-            <div className="text-sm text-center pt-5">
-              <h3 className="font-medium">Token Claimed Successfully 🎉</h3>
-              <p className="text-xs text-neutral-500 pt-3">Congratulations token has been claimed</p>
-            </div>
-
-            <div className="flex items-center pt-5">
-              <RoundedSolidButtonFull text="Close" onClick={()=>(document.getElementById("my_modal_1") as HTMLDialogElement)?.close()}/>
-            </div>
-       
+      <dialog id="my_modal_1" className="modal">
+        <div className="modal-box">
+          <p className="text-4xl text-center p-3 bg-green-100 text-green-700 border border-green-300 w-fit  rounded-full flex m-auto justify-center">
+            <IoCheckmarkDoneOutline  />
+          </p>
+          
+          <div className="text-sm text-center pt-5">
+            <h3 className="font-medium text-base">Token Claimed Successfully 🎉</h3>
+            <p className="text-xs text-neutral-500 pt-3">Congratulations token has been claimed</p>
           </div>
-        </dialog>
+
+          <div className="flex items-center pt-5">
+            <RoundedSolidButtonFull text="Close" onClick={()=>(document.getElementById("my_modal_1") as HTMLDialogElement)?.close()}/>
+          </div>
+        </div>
+      </dialog>
     </div>
   )
 }

@@ -100,6 +100,28 @@ export const friendsData = [
         price: '5000',
         avatar: 'https://randomuser.me/api/portraits/men/66.jpg'
     },
+
+    {
+        name: 'David Lee',
+        date: 'January 18 at 08:30',
+        price: '5000',
+        avatar: 'https://randomuser.me/api/portraits/men/66.jpg'
+    },
+
+
+    {
+        name: 'David Lee',
+        date: 'January 18 at 08:30',
+        price: '5000',
+        avatar: 'https://randomuser.me/api/portraits/men/66.jpg'
+    },
+
+    {
+        name: 'David Lee Lee',
+        date: 'January 18 at 08:30',
+        price: '5000',
+        avatar: 'https://randomuser.me/api/portraits/men/66.jpg'
+    },
 ]
 
 export const leaderData = [

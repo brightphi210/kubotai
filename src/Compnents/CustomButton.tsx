@@ -6,11 +6,23 @@ import { TiStarOutline } from "react-icons/ti";
 interface ButtonProps {
     text: string;
     onClick?: () => void;
+    icon?: React.ReactNode;
 }
 export const MainButton:React.FC<ButtonProps> = ({text, onClick}) => {
   return (
     <div>
         <button className='bg-[#016FEC] py-4 w-full text-xs text-white rounded-lg font-semibold' onClick={onClick}>{text}</button>
+    </div>
+  )
+}
+
+export const MainButtonIcon:React.FC<ButtonProps> = ({text, onClick, icon}) => {
+  return (
+    <div>
+        <button className='bg-[#016FEC] flex items-center justify-center gap-2 py-4 w-full text-xs text-white rounded-lg font-semibold' onClick={onClick}>
+          {text}
+          <span className='text-sm font-semibold'>{icon}</span>
+        </button>
     </div>
   )
 }
@@ -50,7 +62,7 @@ export const RoundedSolidButton:React.FC<ButtonProps> = ({text, onClick}) => {
 export const RoundedSolidButtonFull:React.FC<ButtonProps> = ({text, onClick}) => {
   return (
     <div className='w-full'>
-      <button className='bg-[#016FEC] font-medium text-xs text-white p-3 rounded-full !w-full' onClick={onClick}>{text}</button>
+      <button className='bg-[#016FEC] font-medium text-xs text-white p-3.5 rounded-full !w-full' onClick={onClick}>{text}</button>
     </div>
   )
 }
@@ -58,7 +70,7 @@ export const RoundedSolidButtonFull:React.FC<ButtonProps> = ({text, onClick}) =>
 export const RoundedButtonFull:React.FC<ButtonProps> = ({text, onClick}) => {
   return (
     <div className='w-full'>
-        <button className='bg-blue-50 border-2 border-blue-400 font-medium text-xs text-[#016FEC] p-3 rounded-full !w-full' onClick={onClick}>{text}</button>
+        <button className='bg-blue-50 border-2 border-blue-400 font-medium text-xs text-[#016FEC] p-3.5 rounded-full !w-full' onClick={onClick}>{text}</button>
     </div>
   )
 }
@@ -69,7 +81,7 @@ export const RoundedButtonFull:React.FC<ButtonProps> = ({text, onClick}) => {
 export const RoundedButton:React.FC<ButtonProps> = ({text, onClick}) => {
   return (
     <div>
-        <button className='bg-blue-100 font-light text-xs text-[#016FEC] p-2 px-4 rounded-full' onClick={onClick}>{text}</button>
+        <button className='bg-blue-100 font-light text-[10px] border border-blue-300 text-[#016FEC] p-2 px-4 rounded-full' onClick={onClick}>{text}</button>
     </div>
   )
 }
