@@ -112,7 +112,7 @@ const Home = () => {
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   };
 
-  const {data: rewardDatas, isLoading} = useRewardsGet({userName: user?.username || 'brightscode'});
+  const {data: rewardDatas, isLoading} = useRewardsGet({userName: user?.username || ''});
   const myRewardDatas = rewardDatas?.data?.data as RewardData[] | undefined
 
   console.log('This is my data', myRewardDatas)
@@ -122,10 +122,10 @@ const Home = () => {
     <div className='p-5 text-sm relative bg-gray-100 h-screen overflow-y-scroll'>
       <div className='flex items-center gap-3'>
         <div className='w-10 h-10 bg-neutral-200 rounded-full flex overflow-hidden'>
-          <img src={user?.photo_url} className='w-full h-full object-cover' alt="user avatar" />
+          <img src={user?.photo_url || 'PICS'} className='w-full h-full object-cover' alt="user avatar" />
         </div>
         <div>
-          <h2 className='font-semibold'>{user?.first_name} {user?.last_name}</h2>
+          <h2 className='font-semibold'>{user?.first_name || '- - -'} {user?.last_name || '- - -'}</h2>
           <p className='text-xs text-neutral-600'>@{user?.username || 'No username'}</p>
         </div>
         <div className='ml-auto'>
@@ -153,7 +153,7 @@ const Home = () => {
         </p>
       </div>
 
-      <div className='w-[90%] space-y-2 fixed bottom-[7rem]'>
+      <div className='w-[90%] space-y-2 fixed bottom-[5rem]'>
         <MainButtonLight text='Check your earnings' onClick={()=>(document.getElementById("my_modal_2") as HTMLDialogElement)?.showModal()}/>
         {
           isCharging

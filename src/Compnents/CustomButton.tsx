@@ -11,7 +11,7 @@ interface ButtonProps {
 export const MainButton:React.FC<ButtonProps> = ({text, onClick}) => {
   return (
     <div>
-        <button className='bg-[#016FEC] py-4 w-full text-xs text-white rounded-lg font-semibold' onClick={onClick}>{text}</button>
+        <button className='bg-blue-700 py-4 w-full text-xs text-white rounded-lg font-semibold' onClick={onClick}>{text}</button>
     </div>
   )
 }
