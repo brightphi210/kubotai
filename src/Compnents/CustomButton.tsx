@@ -19,13 +19,25 @@ export const MainButton:React.FC<ButtonProps> = ({text, onClick}) => {
 export const MainButtonIcon:React.FC<ButtonProps> = ({text, onClick, icon}) => {
   return (
     <div>
-        <button className='bg-[#016FEC] flex items-center justify-center gap-2 py-4 w-full text-xs text-white rounded-lg font-semibold' onClick={onClick}>
+        <button className='bg-blue-700 flex items-center justify-center gap-2 py-4 w-full text-xs text-white rounded-lg font-semibold' onClick={onClick}>
           {text}
           <span className='text-sm font-semibold'>{icon}</span>
         </button>
     </div>
   )
 }
+
+export const MainButtonLoadingIcon:React.FC<ButtonProps> = ({text, onClick}) => {
+  return (
+    <div>
+        <button className='bg-blue-700 opacity-80 flex items-center justify-center gap-2 py-4 w-full text-xs text-white rounded-lg font-semibold' onClick={onClick}>
+          <span className="loading loading-spinner loading-xs"></span>
+          {text}
+        </button>
+    </div>
+  )
+}
+
 
 
 export const MainButtonDisable:React.FC<ButtonProps> = ({text, onClick}) => {
@@ -39,7 +51,7 @@ export const MainButtonDisable:React.FC<ButtonProps> = ({text, onClick}) => {
 export const MainButtonLight:React.FC<ButtonProps> = ({text, onClick}) => {
     return (
       <div>
-          <button className='text-[#016FEC] px-4 border border-blue-300  flex items-center gap-2 py-4 w-full text-xs bg-blue-50 rounded-lg font-semibold' onClick={onClick}>
+          <button className='text-blue-700 px-4 border border-blue-300  flex items-center gap-2 py-4 w-full text-xs bg-blue-50 rounded-lg font-semibold' onClick={onClick}>
             <>
                 <TiStarOutline className='text-lg'/>
                 {text}
@@ -54,7 +66,7 @@ export const MainButtonLight:React.FC<ButtonProps> = ({text, onClick}) => {
 export const RoundedSolidButton:React.FC<ButtonProps> = ({text, onClick}) => {
     return (
       <div>
-        <button className='bg-[#016FEC] font-medium text-xs text-white p-2 px-4 rounded-full' onClick={onClick}>{text}</button>
+        <button className='bg-blue-700 font-medium text-xs text-white p-2 px-4 rounded-full' onClick={onClick}>{text}</button>
       </div>
     )
 }
@@ -62,7 +74,7 @@ export const RoundedSolidButton:React.FC<ButtonProps> = ({text, onClick}) => {
 export const RoundedSolidButtonFull:React.FC<ButtonProps> = ({text, onClick}) => {
   return (
     <div className='w-full'>
-      <button className='bg-[#016FEC] font-medium text-xs text-white p-3.5 rounded-full !w-full' onClick={onClick}>{text}</button>
+      <button className='bg-blue-700 font-medium text-xs text-white p-3.5 rounded-full !w-full' onClick={onClick}>{text}</button>
     </div>
   )
 }

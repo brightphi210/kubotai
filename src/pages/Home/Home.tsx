@@ -176,7 +176,10 @@ const Home = () => {
           <div className=' rounded-md mt-5'>
             {isLoading ? 
               <>
-                <p>Loading. .</p>
+                <p className='text-center pt-5'>
+                  <span className="loading loading-spinner loading-md"></span>
+                  <p className='text-[10px] text-gray-500'>Loading...</p>
+                </p>
               </> : 
               <>
                 {myRewardDatas?.length === 0 ? (

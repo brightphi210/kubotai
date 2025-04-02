@@ -10,6 +10,7 @@ import { toast, ToastContainer } from "react-toastify"
 import token from '../../assets/token.png'
 import { MdTaskAlt } from "react-icons/md";
 import { IoCheckmarkDoneOutline  } from "react-icons/io5";
+import { FiCheckCircle } from "react-icons/fi";
 
 
 
@@ -179,10 +180,10 @@ const Task = () => {
   return (
     <div className="p-5 text-sm bg-gray-100 h-screen overflow-y-scroll">
       <ToastContainer theme="light" autoClose={4000} />
-      <div className="text-center pt-5">
+      <div className="text-center pt-3">
         <h2 className="text-2xl font-semibold">Task</h2>
         <p className="text-base font-light text-neutral-500 pt-2">
-          Get Rewarded <br /> for  Completing a task
+          Get Rewarded for Completing <br /> a task
         </p>
       </div>
 
@@ -191,14 +192,14 @@ const Task = () => {
           className={`${isCompleted === 1 ? "bg-blue-100 p-3" : ""} w-full rounded-md`}
           onClick={() => setIsCompleted(1)}
         >
-          <h2 className={`${isCompleted === 1 ? " text-[#016FEC]" : ""} text-center`}>Active</h2>
+          <h2 className={`${isCompleted === 1 ? " text-blue-700" : ""} text-center`}>Active</h2>
         </div>
 
         <div
           className={`${isCompleted === 2 ? "bg-blue-100 p-3" : ""} w-full rounded-md`}
           onClick={() => setIsCompleted(2)}
         >
-          <h2 className={`${isCompleted === 2 ? "text-[#016FEC]" : ""} text-center`}>Completed</h2>
+          <h2 className={`${isCompleted === 2 ? "text-blue-700" : ""} text-center`}>Completed</h2>
         </div>
       </div>
 
@@ -220,10 +221,10 @@ const Task = () => {
                     const joinedTask = joinedTasks.find((t) => t.taskId === task.id)
 
                     return (
-                      <div key={index} className="flex justify-between mb-5 p-3 rounded-md bg-white">
+                      <div key={index} className="flex justify-between mb-3 p-3 rounded-2xl bg-white">
                         <div className="flex gap-3 items-center">
-                          <p className="bg-neutral-100 border border-neutral-300 text-neutral-600 rounded-md p-3.5 text-base">
-                            <SiRakuten />
+                          <p className="bg-neutral-50 border border-neutral-200 text-neutral-500 rounded-full p-3 text-lg">
+                            <FiCheckCircle />
                           </p>
                           <div>
                             <h3 className="text-[12px] font-semibold">{task.title}</h3>
@@ -246,13 +247,13 @@ const Task = () => {
                                   onClick={() => handleClaimReward(task.id)}
                                 /> :
 
-                                <div className="text-[#016FEC] bg-blue-100 border border-blue-200 p-1.5 pb-0 px-4 rounded-full">
+                                <div className="text-blue-700 bg-blue-100 border border-blue-200 p-1.5 pb-0 px-4 rounded-full">
                                   <span className="loading loading-dots loading-xs"></span>
                                 </div>
                               }
                             </>
                           ) : status === "joined" ? (
-                              <div className="bg-[#016FEC] p-1.5 pb-0 px-4 rounded-full text-white">
+                              <div className="bg-blue-700 p-1.5 pb-0 px-4 rounded-full text-white">
                                 <span className="loading loading-dots loading-xs"></span>
                               </div>
                           ) : (

@@ -1,4 +1,4 @@
-import { MainButtonIcon } from '@/Compnents/CustomButton'
+import { MainButtonIcon, MainButtonLoadingIcon } from '@/Compnents/CustomButton'
 import { friendsData } from '@/Compnents/MockData'
 import { useState } from 'react'
 import { toast, ToastContainer } from "react-toastify"
@@ -24,7 +24,8 @@ const Friends = () => {
         setIsDataEmpty(true);
     }
 
-    const {data: walletData} = useGetWalletDetails({userName:  user?.username || 'brightscode'})
+    // const {data: walletData, isLoading} = useGetWalletDetails({userName:  user?.username || 'brightscode'})
+    const {data: walletData, isLoading} = useGetWalletDetails({userName:  user?.username || ''})
     const myWalletData = walletData?.data?.data as WalletData | undefined
 
     // console.log(`https://t.me/kuubot_bot?start=${myWalletData?.referral_id}`)
@@ -97,8 +98,12 @@ const Friends = () => {
 
         <div className='w-full space-y-2 fixed bottom-[6rem] mb-2'>
             <div className='w-[90%] flex flex-col gap-2'>
-                <p className='bg-blue-50 border border-blue-300 rounded p-3 text-xs text-center'>https://t.me/kuubot_bot?start={myWalletData?.referral_id}</p>
-                <MainButtonIcon text='Copy Invite Link' icon={<IoCopyOutline />} onClick={handleCopy}/>
+                <p className='bg-white border border-gray-300 rounded-lg p-3.5 text-xs text-center'>https://t.me/kuubot_bot?start={myWalletData?.referral_id}</p>
+
+                {isLoading ? 
+                    <MainButtonLoadingIcon text='Copy Invite Link' />:
+                    <MainButtonIcon text='Copy Invite Link' icon={<IoCopyOutline />} onClick={handleCopy}/>
+                }
             </div>
         </div>
 

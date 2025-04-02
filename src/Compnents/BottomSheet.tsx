@@ -26,7 +26,7 @@ const BottomSheet = () => {
               key={tab.name}
               className={`flex flex-col w-12 h-11 items-center rounded-md justify-center cursor-pointer transition-all ease-in-out duration-300 ${
                 activeTab === tab.name
-                  ? "bg-[#016FEC] text-white "
+                  ? "bg-blue-700 text-white "
                   : "text-neutral-500"
               }`}
               onClick={() => setActiveTab(tab.name)}
